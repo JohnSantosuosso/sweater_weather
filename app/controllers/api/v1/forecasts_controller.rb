@@ -9,7 +9,6 @@ class Api::V1::ForecastsController < ApplicationController
 
   private
   def get_coordinates
-    require 'pry'; binding.pry 
     if !params[:location].nil?
       @coordinates = MapquestFacade.get_coordinates(params[:location])
     else
