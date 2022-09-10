@@ -1,14 +1,16 @@
 class ForecastService
   class << self
     def call_for_forecast(coordinates)
-      response = connection.get("/geocoding/v1/address?query=#{coordinates}")
+      lat = coordinates[:lat]
+      lng = coordinates[:lng]
+      response = connection.get("/data/2.5/weather?lat=#{lat}&lon=#{lng}")
       parse_data(response)
     end
 
   private
     def connection
-      Faraday.new(url: "http://www.mapquestapi.com") do |faraday|
-        faraday.params["key"] = ENV['coordinates_key']
+      Faraday.new(url: "https://api.openweathermap.org") do |faraday|
+        faraday.params["appid"] = ENV['weather_key']
       end
     end
 

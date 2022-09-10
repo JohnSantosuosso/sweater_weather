@@ -195,7 +195,7 @@
           null,
           null,
           1,
-          2,
+          1,
           null,
           null,
           null,
@@ -216,128 +216,10 @@
           null
         ]
       },
-      "/Users/johnsantosuosso/sweater_weather/sweater_weather/app/facades/mapquest_facade.rb": {
-        "lines": [
-          1,
-          1,
-          1,
-          2,
-          null,
-          null,
-          null
-        ]
-      },
-      "/Users/johnsantosuosso/sweater_weather/sweater_weather/spec/requests/api/v1/forecast_request_spec.rb": {
-        "lines": [
-          1,
-          null,
-          1,
-          1,
-          1,
-          1,
-          null,
-          1,
-          1,
-          null,
-          null,
-          null,
-          null
-        ]
-      },
-      "/Users/johnsantosuosso/sweater_weather/sweater_weather/spec/services/mapquest_service_spec.rb": {
-        "lines": [
-          1,
-          null,
-          1,
-          1,
-          1,
-          1,
-          1,
-          null,
-          1,
-          1,
-          1,
-          null,
-          null,
-          1,
-          1,
-          1,
-          null,
-          1,
-          1,
-          null,
-          null,
-          null,
-          null
-        ]
-      },
-      "/Users/johnsantosuosso/sweater_weather/sweater_weather/app/services/mapquest_service.rb": {
-        "lines": [
-          1,
-          1,
-          1,
-          4,
-          4,
-          null,
-          null,
-          1,
-          1,
-          4,
-          4,
-          null,
-          null,
-          null,
-          1,
-          4,
-          null,
-          null,
-          null,
-          null
-        ]
-      },
-      "/Users/johnsantosuosso/sweater_weather/sweater_weather/app/controllers/api/v1/forecasts_controller.rb": {
-        "lines": [
-          1,
-          1,
-          null,
-          1,
-          1,
-          null,
-          null,
-          null,
-          1,
-          1,
-          1,
-          1,
-          null,
-          0,
-          null,
-          null,
-          null,
-          null,
-          null
-        ]
-      },
-      "/Users/johnsantosuosso/sweater_weather/sweater_weather/app/controllers/application_controller.rb": {
-        "lines": [
-          1,
-          null
-        ]
-      },
-      "/Users/johnsantosuosso/sweater_weather/sweater_weather/app/facades/forecast_facade.rb": {
-        "lines": [
-          1,
-          1,
-          1,
-          1,
-          1,
-          null,
-          null,
-          null
-        ]
-      },
       "/Users/johnsantosuosso/sweater_weather/sweater_weather/app/services/forecast_service.rb": {
         "lines": [
+          1,
+          1,
           1,
           1,
           1,
@@ -360,6 +242,6 @@
         ]
       }
     },
-    "timestamp": 1662839391
+    "timestamp": 1662841514
   }
 }
