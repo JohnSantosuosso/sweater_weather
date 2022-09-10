@@ -1,6 +1,6 @@
 class ForecastService
   class << self
-    def call_for_forecast(call_for_coordinates)
+    def call_for_forecast(coordinates)
       response = connection.get("/geocoding/v1/address?query=#{coordinates}")
       parse_data(response)
     end
