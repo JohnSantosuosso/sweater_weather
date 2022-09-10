@@ -1,7 +1,6 @@
 class ForecastSerializer
   class << self
     def new(forecast)
-      require 'pry'; binding.pry 
       {
         data: {
           id: nil,
@@ -45,7 +44,7 @@ class ForecastSerializer
       end
 
       def hourly_weather(forecast)
-        forecast.[:daily][0..7].map do |hour|
+        forecast[:hourly][0..7].map do |hour|
           {
             time: time_formatter(hour[:dt]),
             temperature: kelvin_to_farenheit_formatter(hour[:temp]),
@@ -56,7 +55,7 @@ class ForecastSerializer
       end
 
       def kelvin_to_farenheit_formatter(temp)
-        ((temp* 9/5)-459.67).round(2)
+        ((temp * 9/5)-459.67).round(2)
       end
 
       def time_formatter(time)
