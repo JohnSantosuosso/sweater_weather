@@ -6,7 +6,7 @@ RSpec.describe MapquestFacade do
       it 'returns coordinates for a given location' do
         location = 'Washington, DC'
         results = MapquestFacade.get_coordinates(location)
-        require 'pry'; binding.pry 
+
         expect(results).to be_a(Hash)
         expect(results).to have_key(:lat)
         expect(results[:lat]).to be_a(Float)
