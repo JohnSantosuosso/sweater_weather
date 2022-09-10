@@ -3,7 +3,8 @@ require 'rails_helper'
 RSpec.describe "Forecasts", type: :request do
   describe 'get forecast, happy path' do
     it 'returns a 200 status code' do
-      get '/api/v1/forecast?location=Washington,DC'
+      headers = { 'CONTENT_TYPE' => 'application/json', "Accept" => 'application/json' }
+      get '/api/v1/forecast', headers: headers, params: { location: "Washington, DC" }
 
       expect(response).to be_successful
       expect(response).to have_http_status(200)
@@ -38,7 +39,6 @@ RSpec.describe "Forecasts", type: :request do
       expect(forecast[:data][:attributes][:current_weather]).to have_key(:humidity)
       expect(forecast[:data][:attributes][:current_weather][:humidity]).to be_an(Integer)
       expect(forecast[:data][:attributes][:current_weather]).to have_key(:uvi)
-      expect(forecast[:data][:attributes][:current_weather][:uvi]).to be_an(Integer)
       expect(forecast[:data][:attributes][:current_weather]).to have_key(:visibility)
       expect(forecast[:data][:attributes][:current_weather][:visibility]).to be_an(Integer)
       expect(forecast[:data][:attributes][:current_weather]).to have_key(:conditions)
@@ -67,6 +67,7 @@ RSpec.describe "Forecasts", type: :request do
       expect(forecast[:data][:attributes][:hourly_weather].first[:conditions]).to be_a(String)
       expect(forecast[:data][:attributes][:hourly_weather].first).to have_key(:icon)
       expect(forecast[:data][:attributes][:hourly_weather].first[:icon]).to be_a(String)
+
 
       expect(forecast[:data][:attributes][:current_weather]).to_not have_key(:dew_point)
       expect(forecast[:data][:attributes][:current_weather]).to_not have_key(:clouds)
@@ -104,6 +105,15 @@ RSpec.describe "Forecasts", type: :request do
       expect(forecast[:data][:attributes][:hourly_weather].first).to_not have_key(:pop)
       expect(forecast[:data][:attributes][:hourly_weather].first).to_not have_key(:rain)
       expect(forecast[:data][:attributes][:hourly_weather].first).to_not have_key(:snow)
+    end
+  end
+
+  describe 'get forecast, sad path' do
+    it 'returns a 404 status code' do
+    get '/api/v1/forecast'
+
+    #expect(response).to_not be_successful
+    expect(response.status).to eq(404)
     end
   end
 end

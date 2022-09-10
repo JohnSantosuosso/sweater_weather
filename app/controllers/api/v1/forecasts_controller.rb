@@ -9,12 +9,12 @@ class Api::V1::ForecastsController < ApplicationController
 
   private
   def get_coordinates
-    if params[:location].present?
+    require 'pry'; binding.pry 
+    if !params[:location].nil?
       @coordinates = MapquestFacade.get_coordinates(params[:location])
     else
-      render 404 # update to render error message
+      render status: 404 # update to render error message
     end
   end
-
 
 end
