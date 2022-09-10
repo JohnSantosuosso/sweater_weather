@@ -8,6 +8,7 @@ class Api::V1::ForecastsController < ApplicationController
 
   private
   def get_coordinates
+    require 'pry'; binding.pry 
     if params[:location].present?
       @coordinates = MapquestService.call_for_coordinates(params[:location])
     else
