@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe ForecastService do
+RSpec.describe ForecastFacade do
   it 'can get forecast data' do
     coordinates = {lat: 39.738453, lng: -104.984853}
-    forecast = ForecastService.call_for_forecast(coordinates)
+    forecast = ForecastFacade.get_forecast(coordinates)
     
     expect(forecast).to be_a(Hash)
     expect(forecast).to have_key(:weather)
@@ -36,4 +36,3 @@ RSpec.describe ForecastService do
     expect(forecast[:name]).to be_a(String)
   end
 end
-  

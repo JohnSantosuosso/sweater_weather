@@ -216,6 +216,17 @@
           null
         ]
       },
+      "/Users/johnsantosuosso/sweater_weather/sweater_weather/app/facades/forecast_facade.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null
+        ]
+      },
       "/Users/johnsantosuosso/sweater_weather/sweater_weather/app/services/forecast_service.rb": {
         "lines": [
           1,
@@ -242,6 +253,6 @@
         ]
       }
     },
-    "timestamp": 1662841514
+    "timestamp": 1662841627
   }
 }
