@@ -3,7 +3,7 @@ class ForecastService
     def call_for_forecast(coordinates)
       lat = coordinates[:lat]
       lng = coordinates[:lng]
-      response = connection.get("/data/2.5/weather?lat=#{lat}&lon=#{lng}")
+      response = connection.get("/data/3.0/onecall?lat=#{lat}&lon=#{lng}")
       parse_data(response)
     end
 

@@ -3,6 +3,7 @@ class Api::V1::ForecastsController < ApplicationController
 
   def index
     @forecast = ForecastFacade.get_forecast(@coordinates)
+    render json: ForecastSerializer.new(@forecast)
   end
 
 
