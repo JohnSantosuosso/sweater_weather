@@ -39,6 +39,7 @@ RSpec.describe "Session Creation", type: :request do
 
       
       expect(response.status).to eq(401)
+      expect(response.body).to eq("{\"errors\":\"Invalid email or password\"}")
 
     end
   end
