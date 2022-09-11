@@ -26,14 +26,25 @@ RSpec.describe "User Registation", type: :request do
   end
 
   describe 'expose user registration endpoint, sad path' do
-    it 'returns a 400 status code', :vcr do
+    it 'returns a 400 status code for mistyped password', :vcr do
       headers = { 'CONTENT_TYPE' => 'application/json', "Accept" => 'application/json' }
       user_data = { "email": "john@gmail.com", "password": "password123", "password_confirmation": "assword123" }
       post '/api/v1/users', headers: headers, params: JSON.generate(user_data)
 
 
-      expect(response.status).to eq(400)
-      expect(response.body).to eq("{\"errors\":\"Passwords do not match\"}")
+      expect(response.status).to eq(401)
+      expect(response.body).to eq("{\"errors\":\"Passwords do not match\"}")#update error message formatting later
+    end
+
+    it 'returns a 400 status code for an email that already exists', :vcr do
+      user_1 = User.create(email: "john@gmail.com", password: "password123", password_confirmation: "password123")
+      headers = { 'CONTENT_TYPE' => 'application/json', "Accept" => 'application/json' }
+      user_data = { "email": "john@gmail.com", "password": "password123", "password_confirmation": "password123" }
+      post '/api/v1/users', headers: headers, params: JSON.generate(user_data)
+
+
+      expect(response.status).to eq(401)
+      expect(response.body).to eq("{\"errors\":[\"Email has already been taken\"]}")#update error message formatting later
     end
   end
 end

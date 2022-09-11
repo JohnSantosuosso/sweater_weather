@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2022-09-11T15:43:52-04:00">2022-09-11T15:43:52-04:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2022-09-11T15:52:20-04:00">2022-09-11T15:52:20-04:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -23,14 +23,14 @@
     <span class="group_name">All Files</span>
     (<span class="covered_percent">
       <span class="green">
-  98.51%
+  100.0%
 </span>
 
      </span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         1.01
+         1.09
        </span>
     </span> hits/line
     )
@@ -44,10 +44,10 @@
 
   <div class="t-line-summary">
     <b>67</b> relevant lines,
-    <span class="green"><b>66</b> lines covered</span> and
-    <span class="red"><b>1</b> lines missed. </span>
+    <span class="green"><b>67</b> lines covered</span> and
+    <span class="red"><b>0</b> lines missed. </span>
     (<span class="green">
-  98.51%
+  100.0%
 </span>
 )
   </div>
@@ -72,12 +72,12 @@
         
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#ec4261675b9af1ac30cfc560e2d813d18b76cdcf" class="src_link" title="app/controllers/api/v1/users_controller.rb">app/controllers/api/v1/users_controller.rb</a></td>
-            <td class="green strong cell--number t-file__coverage">91.67 %</td>
+            <td class="green strong cell--number t-file__coverage">100.00 %</td>
             <td class="cell--number">21</td>
             <td class="cell--number">12</td>
-            <td class="cell--number">11</td>
-            <td class="cell--number">1</td>
-            <td class="cell--number">1.00</td>
+            <td class="cell--number">12</td>
+            <td class="cell--number">0</td>
+            <td class="cell--number">1.42</td>
             
           </tr>
         
@@ -279,7 +279,7 @@
     <h3>app/controllers/api/v1/users_controller.rb</h3>
     <h4>
       <span class="green">
-  91.67%
+  100.0%
 </span>
 
       lines covered
@@ -289,8 +289,8 @@
 
     <div class="t-line-summary">
       <b>12</b> relevant lines.
-      <span class="green"><b>11</b> lines covered</span> and
-      <span class="red"><b>1</b> lines missed.</span>
+      <span class="green"><b>12</b> lines covered</span> and
+      <span class="red"><b>0</b> lines missed.</span>
     </div>
 
     
@@ -334,8 +334,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="4">
-            <span class="hits">2</span>
+          <li class="covered" data-hits="3" data-linenumber="4">
+            <span class="hits">3</span>
             
 
             
@@ -345,8 +345,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="5">
-            <span class="hits">1</span>
+          <li class="covered" data-hits="2" data-linenumber="5">
+            <span class="hits">2</span>
             
 
             
@@ -356,8 +356,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="6">
-            <span class="hits">1</span>
+          <li class="covered" data-hits="2" data-linenumber="6">
+            <span class="hits">2</span>
             
 
             
@@ -384,7 +384,7 @@
 
             
 
-            <code class="ruby">       render json: UserSerializer.new(user), status: 201</code>
+            <code class="ruby">      render json: UserSerializer.new(user), status: 201</code>
           </li>
         </div>
       
@@ -400,13 +400,13 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="10">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="10">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">       render json: { errors: user.errors.full_messages }, status: 400</code>
+            
+
+            <code class="ruby">      render json: { errors: user.errors.full_messages }, status: 401</code>
           </li>
         </div>
       
@@ -439,7 +439,7 @@
 
             
 
-            <code class="ruby">     render json: { errors: &quot;Passwords do not match&quot; }, status: 400</code>
+            <code class="ruby">     render json: { errors: &quot;Passwords do not match&quot; }, status: 401</code>
           </li>
         </div>
       
@@ -499,8 +499,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="19">
-            <span class="hits">1</span>
+          <li class="covered" data-hits="2" data-linenumber="19">
+            <span class="hits">2</span>
             
 
             

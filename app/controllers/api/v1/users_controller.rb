@@ -5,12 +5,12 @@ class Api::V1::UsersController < ApplicationController
      user = User.create(user_params)
      if user.save
       user.update(auth_token: user.generate_auth_token)
-       render json: UserSerializer.new(user), status: 201
+      render json: UserSerializer.new(user), status: 201
      else
-       render json: { errors: user.errors.full_messages }, status: 400
+      render json: { errors: user.errors.full_messages }, status: 401
      end
    else
-     render json: { errors: "Passwords do not match" }, status: 400
+     render json: { errors: "Passwords do not match" }, status: 401
    end
   end
 
