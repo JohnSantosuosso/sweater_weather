@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "Forecasts", type: :request do
   describe 'get forecast, happy path' do
-    it 'returns a 200 status code' do
+    it 'returns a 200 status code', :vcr do
       headers = { 'CONTENT_TYPE' => 'application/json', "Accept" => 'application/json' }
       get '/api/v1/forecast', headers: headers, params: { location: "Washington, DC" }
 
@@ -109,7 +109,7 @@ RSpec.describe "Forecasts", type: :request do
   end
 
   describe 'get forecast, sad path' do
-    it 'returns a 404 status code' do
+    it 'returns a 404 status code', :vcr do
     get '/api/v1/forecast'
 
     #expect(response).to_not be_successful

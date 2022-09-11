@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe MapquestFacade do
   describe 'class methods' do
-    describe '::get_coordinates' do
+    describe '::get_coordinates', :vcr do
       it 'returns coordinates for a given location' do
         location = 'Washington, DC'
         results = MapquestFacade.get_coordinates(location)
