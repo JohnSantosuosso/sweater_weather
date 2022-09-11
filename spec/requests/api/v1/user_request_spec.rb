@@ -33,6 +33,7 @@ RSpec.describe "User Registation", type: :request do
 
 
       expect(response.status).to eq(400)
+      expect(response.body).to eq("{\"errors\":\"Passwords do not match\"}")
     end
   end
 end
