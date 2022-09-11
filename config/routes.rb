@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       get '/forecast', to: 'forecasts#index'
       post '/users', to: 'users#create'
-      post '/sessions', to: 'sessions#create'
+      post '/sessions', to: 'sessions#show'
     end
   end
 end
