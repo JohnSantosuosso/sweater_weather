@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe MapquestService do
   describe 'class methods' do
     describe '.call_for_coordinates, happy path' do
-      it 'returns a hash of coordinates' do
+      it 'returns a hash of coordinates', :vcr do
         response = MapquestService.call_for_coordinates('Washington, DC')
 
         expect(response).to be_a(Hash)
@@ -12,7 +12,7 @@ RSpec.describe MapquestService do
       end
     end
     describe '.call_for_coordinates, sad path' do
-      it 'returns a hash of coordinates' do
+      it 'returns a hash of coordinates', :vcr do
         response = MapquestService.call_for_coordinates('')
         
         expect(response).to be_a(Hash)
