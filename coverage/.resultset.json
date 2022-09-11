@@ -195,7 +195,7 @@
           null,
           null,
           1,
-          2,
+          1,
           null,
           null,
           null,
@@ -217,23 +217,24 @@
           null
         ]
       },
-      "/Users/johnsantosuosso/sweater_weather/sweater_weather/app/controllers/api/v1/users_controller.rb": {
+      "/Users/johnsantosuosso/sweater_weather/sweater_weather/app/models/user.rb": {
         "lines": [
           1,
-          null,
+          1,
           1,
           null,
-          null,
+          1,
           null
         ]
       },
-      "/Users/johnsantosuosso/sweater_weather/sweater_weather/app/controllers/application_controller.rb": {
+      "/Users/johnsantosuosso/sweater_weather/sweater_weather/app/models/application_record.rb": {
         "lines": [
+          1,
           1,
           null
         ]
       }
     },
-    "timestamp": 1662856225
+    "timestamp": 1662860833
   }
 }
