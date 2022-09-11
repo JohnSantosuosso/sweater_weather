@@ -1,7 +1,6 @@
 class UserSerializer
   class << self
     def new(user)
-      require 'pry'; binding.pry 
       {
         data: {
           type: 'users',
