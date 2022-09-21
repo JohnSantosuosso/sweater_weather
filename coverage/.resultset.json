@@ -213,8 +213,40 @@
           1,
           1,
           1,
+          1,
           null,
           null,
+          null
+        ]
+      },
+      "/Users/johnsantosuosso/sweater_weather/sweater_weather/app/controllers/api/v1/users_controller.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          3,
+          2,
+          2,
+          1,
+          1,
+          null,
+          1,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          1,
+          1,
+          2,
+          null,
+          null
+        ]
+      },
+      "/Users/johnsantosuosso/sweater_weather/sweater_weather/app/controllers/application_controller.rb": {
+        "lines": [
+          1,
           null
         ]
       },
@@ -228,7 +260,7 @@
           1,
           null,
           1,
-          0,
+          1,
           null,
           null
         ]
@@ -240,49 +272,26 @@
           null
         ]
       },
-      "/Users/johnsantosuosso/sweater_weather/sweater_weather/app/controllers/api/v1/sessions_controller.rb": {
-        "lines": [
-          1,
-          null,
-          1,
-          2,
-          2,
-          2,
-          1,
-          null,
-          1,
-          null,
-          null,
-          null,
-          null
-        ]
-      },
-      "/Users/johnsantosuosso/sweater_weather/sweater_weather/app/controllers/application_controller.rb": {
-        "lines": [
-          1,
-          null
-        ]
-      },
       "/Users/johnsantosuosso/sweater_weather/sweater_weather/app/serializers/user_serializer.rb": {
         "lines": [
           1,
           1,
           1,
           null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
           0,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          1,
-          null,
-          1,
           null,
           null,
           null,
@@ -297,6 +306,6 @@
         ]
       }
     },
-    "timestamp": 1662935729
+    "timestamp": 1663783048
   }
 }

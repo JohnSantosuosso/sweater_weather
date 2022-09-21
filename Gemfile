@@ -31,6 +31,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'jsonapi-serializer'
 gem 'faraday'
 gem 'figaro'
+gem 'json'
 
 group :test do
   gem 'factory_bot_rails'
