@@ -1,7 +1,6 @@
 class RoadTripSerializer
   class << self
     def new(trip_data, forecast_data)
-      require 'pry'; binding.pry 
       {
         data: {
           id: nil,
