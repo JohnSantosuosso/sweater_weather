@@ -1,6 +1,7 @@
 class RoadTripSerializer
   class << self
     def new(trip_data, forecast_data)
+      require 'pry'; binding.pry 
       {
         data: {
           id: nil,
@@ -9,7 +10,10 @@ class RoadTripSerializer
             start_city: format_starting_location(trip_data),
             end_city: format_ending_location(trip_data),
             travel_time: format_travel_time(trip_data),
-            weather_at_eta: format_weather_at_eta(forecast_data, trip_data)
+            weather_at_eta: {
+              temperature: format_weather_at_eta(forecast_data, trip_data)[:temperature],
+              conditions: format_weather_at_eta(forecast_data, trip_data)[:conditions]
+            }
           }
         }
       }
@@ -89,15 +93,12 @@ class RoadTripSerializer
 
     def format_weather_at_eta(forecast_data, trip_data)
       future_forecast = total_time_hourly_threshold_check(forecast_data, trip_data)
-      require 'pry'; binding.pry
+      future_forecast = { temperature: kelvin_to_farenheit_formatter(future_forecast[:temp]), conditions: future_forecast[:weather].first[:description] }
+      future_forecast
     end
 
-    def format_temperature_at_eta(forecast_data)
-      forecast_data[:current][:temp]
-    end
-
-    def format_conditions_at_eta(forecast_data)
-      forecast_data[:current][:weather].first[:description]
+    def kelvin_to_farenheit_formatter(temp)
+      ((temp * 9/5)-459.67).round(2)
     end
 
   end
