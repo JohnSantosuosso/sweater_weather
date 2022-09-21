@@ -1,7 +1,6 @@
 class RoadTripSerializer
   class << self
-    def new(trip_data)
-      require 'pry'; binding.pry 
+    def new(trip_data, forecast_data)
       {
         data: {
           id: nil,
@@ -9,12 +8,14 @@ class RoadTripSerializer
           attributes: {
             start_city: format_starting_location(trip_data),
             end_city: format_ending_location(trip_data),
-            travel_time: format_travel_time(trip_data)
+            travel_time: format_travel_time(trip_data),
+            weather_at_eta: format_weather_at_eta(forecast_data, trip_data)
           }
         }
       }
     end
 
+    #add to module everything below
     def format_starting_location(trip_data)
      format_starting_city(trip_data) + ', ' + format_starting_state(trip_data)
     end
@@ -51,6 +52,52 @@ class RoadTripSerializer
     def minute_format(trip_data)
       minutes = trip_data[:route][:formattedTime].slice(3..4).to_i
       "#{minutes} minutes"
+    end
+
+    def format_total_time(trip_data)
+      trip_time_to_milliseconds = trip_data[:route][:realTime]
+      Time.now.to_i + trip_time_to_milliseconds
+    end
+
+    def total_time_hourly_threshold_check(forecast_data, trip_data)
+      if !hourly_check(forecast_data, trip_data).nil?
+        hourly_check(forecast_data, trip_data)
+      else
+        run_daily_check(forecast_data, trip_data)
+      end
+    end
+
+    def daily_check(forecast_data, trip_data)
+      if !daily_check(forecast_data, trip_data).nil?
+        daily_check(forecast_data, trip_data)
+      else
+        nil
+      end
+    end
+
+    def hourly_check(forecast_data, trip_data)
+      forecast_data[:hourly].bsearch do |hour|
+        hour[:dt] >= format_total_time(trip_data)
+      end
+    end
+
+    def daily_check(forecast_data)
+      forecast_data[:daily][1..7].bsearch do |day|
+        day[:dt] >= format_total_time(trip_data)
+      end
+    end
+
+    def format_weather_at_eta(forecast_data, trip_data)
+      future_forecast = total_time_hourly_threshold_check(forecast_data, trip_data)
+      require 'pry'; binding.pry
+    end
+
+    def format_temperature_at_eta(forecast_data)
+      forecast_data[:current][:temp]
+    end
+
+    def format_conditions_at_eta(forecast_data)
+      forecast_data[:current][:weather].first[:description]
     end
 
   end

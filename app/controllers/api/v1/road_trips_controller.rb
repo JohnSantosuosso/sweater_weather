@@ -3,7 +3,8 @@ class Api::V1::RoadTripsController < ApplicationController
 
   def create
     @road_trip = MapquestFacade.get_road_trip(@origin, @destination)
-    render json: RoadTripSerializer.new(@road_trip) 
+    @weather = ForecastFacade.get_forecast(@destination)
+    render json: RoadTripSerializer.new(@road_trip, @weather)
   end
 
   private
