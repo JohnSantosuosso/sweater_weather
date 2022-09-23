@@ -70,7 +70,7 @@ class RoadTripSerializer
       end
     end
 
-    def daily_check(forecast_data, trip_data)
+    def run_daily_check(forecast_data, trip_data)
       if !daily_check(forecast_data, trip_data).nil?
         daily_check(forecast_data, trip_data)
       else
@@ -84,7 +84,7 @@ class RoadTripSerializer
       end
     end
 
-    def daily_check(forecast_data)
+    def daily_check(forecast_data, trip_data)
       forecast_data[:daily][1..7].bsearch do |day|
         day[:dt] >= format_total_time(trip_data)
       end
@@ -97,7 +97,7 @@ class RoadTripSerializer
     end
 
     def kelvin_to_farenheit_formatter(temp)
-      ((temp * 9/5)-459.67).round(2)
+      ((temp[:day] * 9/5)-459.67).round(2)
     end
 
   end

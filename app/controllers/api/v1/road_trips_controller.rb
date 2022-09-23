@@ -16,7 +16,7 @@ class Api::V1::RoadTripsController < ApplicationController
     if !params[:origin].nil?
       @origin = MapquestFacade.get_coordinates(params[:origin])
     else
-      render status: 404 # update to render error message
+      render json: "Origin cannot be nil.", status: 404
     end
   end
 
@@ -24,7 +24,7 @@ class Api::V1::RoadTripsController < ApplicationController
     if !params[:destination].nil?
       @destination = MapquestFacade.get_coordinates(params[:destination])
     else
-      render status: 404 # update to render specific error message
+      render json: "Destination cannot be nil.", status: 404
     end
   end
 

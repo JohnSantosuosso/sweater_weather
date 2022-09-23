@@ -43,15 +43,37 @@ RSpec.describe "Road Trips", type: :request do
       expect(response.body).to eq('Invalid API Key')
     end
 
-  it 'returns a 404 status code with unreachable destination', :vcr do
+    it 'returns a 404 status code with unreachable destination', :vcr do
+        user = User.create(email: 'john@gmail.com', password: 'password', password_confirmation: 'password')
+        body = { origin: 'Denver,CO', destination: 'Wuhan China', api_key: user.auth_token  }
+        headers = { 'CONTENT_TYPE' => 'application/json', "Accept" => 'application/json' }
+
+        post '/api/v1/road_trip', headers: headers, params: JSON.generate(body)
+
+        expect(response.status).to eq(404)
+        expect(response.body).to eq("We are unable to route with the given locations.")
+    end
+
+    it 'returns a 404 status code no origin provided', :vcr do
       user = User.create(email: 'john@gmail.com', password: 'password', password_confirmation: 'password')
-      body = { origin: 'Denver,CO', destination: 'Wuhan China', api_key: user.auth_token  }
+      body = { origin: nil, destination: "Aurora, CO", api_key: user.auth_token  }
+      headers = { 'CONTENT_TYPE' => 'application/json', "Accept" => 'application/json' }
+
+      post '/api/v1/road_trip', headers: headers, params: JSON.generate(body)
+  
+      expect(response.status).to eq(404)
+      expect(response.body).to eq("Origin cannot be nil.")
+    end
+
+    it 'returns a 404 status code no destination provided', :vcr do
+      user = User.create(email: 'john@gmail.com', password: 'password', password_confirmation: 'password')
+      body = { origin: 'Denver,CO', destination: nil, api_key: user.auth_token  }
       headers = { 'CONTENT_TYPE' => 'application/json', "Accept" => 'application/json' }
 
       post '/api/v1/road_trip', headers: headers, params: JSON.generate(body)
 
       expect(response.status).to eq(404)
-      expect(response.body).to eq("We are unable to route with the given locations.")
+      expect(response.body).to eq("Destination cannot be nil.")
     end
   end
 end
