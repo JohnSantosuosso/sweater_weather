@@ -12,7 +12,7 @@ class Api::V1::ForecastsController < ApplicationController
     if !params[:location].nil?
       @coordinates = MapquestFacade.get_coordinates(params[:location])
     else
-      render status: 404 # update to render error message
+      render json: "Location cannot be nil.", status: 404
     end
   end
 

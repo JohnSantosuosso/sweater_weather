@@ -110,10 +110,11 @@ RSpec.describe "Forecasts", type: :request do
 
   describe 'get forecast, sad path' do
     it 'returns a 404 status code', :vcr do
-    get '/api/v1/forecast'
+      headers = { 'CONTENT_TYPE' => 'application/json', "Accept" => 'application/json' }
+      get '/api/v1/forecast', headers: headers, params: { location: nil}
 
-    #expect(response).to_not be_successful
     expect(response.status).to eq(404)
+    expect(response.body).to eq("Location cannot be nil.")
     end
   end
 end

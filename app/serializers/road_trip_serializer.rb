@@ -92,11 +92,11 @@ class RoadTripSerializer
 
     def format_weather_at_eta(forecast_data, trip_data)
       future_forecast = total_time_hourly_threshold_check(forecast_data, trip_data)
-      future_forecast = { temperature: kelvin_to_farenheit_formatter(future_forecast[:temp]), conditions: future_forecast[:weather].first[:description] }
+      future_forecast = { temperature: kelvin_to_farenheit_formatter_road_trip(future_forecast[:temp]), conditions: future_forecast[:weather].first[:description] }
       future_forecast
     end
 
-    def kelvin_to_farenheit_formatter(temp)
+    def kelvin_to_farenheit_formatter_road_trip(temp)
       ((temp[:day] * 9/5)-459.67).round(2)
     end
 
