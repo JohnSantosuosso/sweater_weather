@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe ForecastFacade do
-  it 'can get forecast data', :vcr do
+  it 'can get forecast data, happy path', :vcr do
     coordinates = {lat: 39.738453, lng: -104.984853}
     forecast = ForecastFacade.get_forecast(coordinates)
     
@@ -58,7 +58,6 @@ RSpec.describe ForecastFacade do
     expect(forecast[:daily].first[:temp]).to have_key(:max)
     expect(forecast[:daily].first[:temp][:max]).to be_a(Float)
     expect(forecast[:daily].first[:temp]).to have_key(:min)
-    expect(forecast[:daily].first[:temp][:min]).to be_a(Float)
     expect(forecast[:daily].first).to have_key(:weather)
     expect(forecast[:daily].first[:weather]).to be_an(Array)
     expect(forecast[:daily].first[:weather].first).to have_key(:description)
@@ -66,4 +65,11 @@ RSpec.describe ForecastFacade do
     expect(forecast[:daily].first[:weather].first).to have_key(:icon)
     expect(forecast[:daily].first[:weather].first[:icon]).to be_a(String)
   end
+
+  it 'can get forecast data, sad path', :vcr do
+    coordinates = {lat: 39.738453, lng: nil}
+    forecast = ForecastFacade.get_forecast(coordinates)
+    
+    expect(forecast[:message]).to eq('Nothing to geocode')
+  end 
 end
