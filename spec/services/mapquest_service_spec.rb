@@ -11,6 +11,7 @@ RSpec.describe MapquestService do
         expect(response[:results][0][:locations][0][:latLng]).to have_key(:lng)
       end
     end
+    
     describe '.call_for_coordinates, sad path' do
       it 'returns a hash of coordinates', :vcr do
         response = MapquestService.call_for_coordinates('')

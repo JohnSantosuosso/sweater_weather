@@ -70,7 +70,7 @@ class RoadTripSerializer
       end
     end
 
-    def daily_check(forecast_data, trip_data)
+    def run_daily_check(forecast_data, trip_data)
       if !daily_check(forecast_data, trip_data).nil?
         daily_check(forecast_data, trip_data)
       else
@@ -84,7 +84,7 @@ class RoadTripSerializer
       end
     end
 
-    def daily_check(forecast_data)
+    def daily_check(forecast_data, trip_data)
       forecast_data[:daily][1..7].bsearch do |day|
         day[:dt] >= format_total_time(trip_data)
       end
@@ -92,13 +92,15 @@ class RoadTripSerializer
 
     def format_weather_at_eta(forecast_data, trip_data)
       future_forecast = total_time_hourly_threshold_check(forecast_data, trip_data)
-      future_forecast = { temperature: kelvin_to_farenheit_formatter(future_forecast[:temp]), conditions: future_forecast[:weather].first[:description] }
+      future_temperature = future_forecast[:temp] || future_forecast[:temp][:day]
+      future_temperature = kelvin_to_farenheit_formatter_road_trip(future_temperature)
+      future_forecast = { temperature: future_temperature, conditions: future_forecast[:weather].first[:description] }
       future_forecast
     end
 
-    def kelvin_to_farenheit_formatter(temp)
-      ((temp * 9/5)-459.67).round(2)
+    def kelvin_to_farenheit_formatter_road_trip(future_temperature)
+      future_temperature.class == Hash ? future_temperature = future_temperature[:day] : future_temperature
+      ((future_temperature * 9/5)-459.67).round(2)
     end
-
   end
 end
