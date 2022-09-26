@@ -9,7 +9,7 @@ class BookSerializer
             destination: location,
             forecast: {
               summary: forecast[:current][:weather].first[:description],
-              temperature: forecast[:current][:temp] #convert to farenheit
+              temperature: kelvin_to_farenheit_formatter(forecast[:current][:temp])
             },
             total_books_found: books[:numFound],
             books: [
@@ -18,17 +18,20 @@ class BookSerializer
           }
         }
       }
-      require 'pry'; binding.pry 
     end
 
-      def book_info(books)
-        books[:docs].map do |book|
-          {
-            isbn: book[:isbn] || 'no isbn data available',
-            title: book[:title],
-            publisher: book[:publisher]
-          }
-        end
+    def book_info(books)
+      books[:docs].map do |book|
+        {
+          isbn: book[:isbn] || 'no isbn data available',
+          title: book[:title],
+          publisher: book[:publisher]
+        }
       end
+    end
+
+    def kelvin_to_farenheit_formatter(temp)
+      ((temp * 9/5)-459.67).round(2)
+    end
   end
 end
