@@ -21,7 +21,7 @@ class BookSerializer
     def book_info(books)
       books[:docs].map do |book|
         {
-          isbn: book[:isbn] || 'no isbn data available',
+          isbn: isbn_check(book),
           title: book[:title],
           publisher: book[:publisher]
         }
@@ -30,6 +30,14 @@ class BookSerializer
 
     def kelvin_to_farenheit_formatter(temp)
       ((temp * 9/5)-459.67).round(2)
+    end
+
+    def isbn_check(book)
+      if book[:isbn].nil?
+        'no isbn data available'
+      else
+        book[:isbn]
+      end
     end
   end
 end

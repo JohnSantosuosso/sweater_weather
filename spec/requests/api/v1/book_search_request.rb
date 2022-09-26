@@ -44,4 +44,20 @@ RSpec.describe "Book Searches", type: :request do
       expect(results[:data][:attributes][:books].first[:publisher]).to be_a(Array)
     end
   end
+
+  describe 'get trip, sad path, no isbn' do
+    it 'returns a 200 status code', :vcr do
+      headers = { 'CONTENT_TYPE' => 'application/json', "Accept" => 'application/json' }
+      get '/api/v1/book-search', headers: headers, params: { location: "denver, co", quantity: 5 }
+
+      expect(response).to be_successful
+      expect(response).to have_http_status(200)
+
+      results = JSON.parse(response.body, symbolize_names: true)
+
+      expect(results[:data][:attributes][:books].first).to have_key(:isbn)
+      expect(results[:data][:attributes][:books].first[:isbn]).to eq('no isbn data available')
+    end
+  end
+
 end
