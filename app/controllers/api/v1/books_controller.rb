@@ -4,7 +4,7 @@ class Api::V1::BooksController < ApplicationController
   def index
     @books = BookFacade.get_books(params[:location], params[:quantity])
     @forecast = ForecastFacade.get_forecast(@coordinates)
-    require 'pry'; binding.pry 
+    render json: BookSerializer.new(@books, @forecast, params[:location])
   end
 
 

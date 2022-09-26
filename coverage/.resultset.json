@@ -364,8 +364,47 @@
           null,
           null
         ]
+      },
+      "/Users/johnsantosuosso/sweater_weather/sweater_weather/app/serializers/book_serializer.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null,
+          1,
+          3,
+          null,
+          15,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
       }
     },
-    "timestamp": 1664205983
+    "timestamp": 1664207555
   }
 }
