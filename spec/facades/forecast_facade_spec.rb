@@ -56,7 +56,6 @@ RSpec.describe ForecastFacade do
     expect(forecast[:daily].first).to have_key(:temp)
     expect(forecast[:daily].first[:temp]).to be_a(Hash)
     expect(forecast[:daily].first[:temp]).to have_key(:max)
-    expect(forecast[:daily].first[:temp][:max]).to be_a(Float)
     expect(forecast[:daily].first[:temp]).to have_key(:min)
     expect(forecast[:daily].first).to have_key(:weather)
     expect(forecast[:daily].first[:weather]).to be_an(Array)
