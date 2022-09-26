@@ -1,5 +1,5 @@
 class Api::V1::BooksController < ApplicationController
-  before_action :get_coordinates
+  before_action :get_coordinates, :params_quantity_check
 
   def index
     @books = BookFacade.get_books(params[:location], params[:quantity])
@@ -17,5 +17,10 @@ class Api::V1::BooksController < ApplicationController
     end
   end
 
+  def params_quantity_check
+    if params[:quantity].nil? || params[:quantity].to_i < 1
+      render json: "Quantity cannot be nil or less than 1.", status: 404
+    end
+  end
 
 end

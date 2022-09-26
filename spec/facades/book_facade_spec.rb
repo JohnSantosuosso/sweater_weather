@@ -16,4 +16,5 @@ RSpec.describe BookFacade do
     expect(books[:docs].last).to have_key(:publisher)
     expect(books[:docs].last[:publisher]).to be_a(Array)
   end
+
 end

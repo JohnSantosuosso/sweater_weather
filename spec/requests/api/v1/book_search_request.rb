@@ -64,4 +64,15 @@ RSpec.describe "Book Searches", type: :request do
     end
   end
 
+  describe 'get trip, sad path, zero quantity' do
+    it 'returns a 200 status code', :vcr do
+      headers = { 'CONTENT_TYPE' => 'application/json', "Accept" => 'application/json' }
+      get '/api/v1/book-search', headers: headers, params: { location: "denver, co", quantity: 0 }
+
+      expect(response).to have_http_status(404)
+      
+      expect(response.body).to eql("Quantity cannot be nil or less than 1.")
+    end
+  end
+
 end
