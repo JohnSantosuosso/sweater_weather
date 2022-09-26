@@ -24,6 +24,7 @@ RSpec.describe "Book Searches", type: :request do
       expect(results[:data]).to have_key(:attributes)
       expect(results[:data][:attributes]).to be_a(Hash)
       expect(results[:data][:attributes]).to have_key(:destination)
+      expect(results[:data][:attributes][:destination]).to eq("Washington, DC")
       expect(results[:data][:attributes][:destination]).to be_a(String)
       expect(results[:data][:attributes]).to have_key(:forecast)
       expect(results[:data][:attributes][:forecast]).to be_a(Hash)
@@ -45,7 +46,7 @@ RSpec.describe "Book Searches", type: :request do
     end
   end
 
-  describe 'get trip, sad path, no isbn' do
+  describe 'get trip, sad path, no isbn data' do
     it 'returns a 200 status code', :vcr do
       headers = { 'CONTENT_TYPE' => 'application/json', "Accept" => 'application/json' }
       get '/api/v1/book-search', headers: headers, params: { location: "denver, co", quantity: 5 }
