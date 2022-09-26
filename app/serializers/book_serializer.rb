@@ -12,9 +12,7 @@ class BookSerializer
               temperature: kelvin_to_farenheit_formatter(forecast[:current][:temp])
             },
             total_books_found: books[:numFound],
-            books: [
-              book_info(books) 
-            ]
+            books: book_info(books) 
           }
         }
       }
