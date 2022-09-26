@@ -56,6 +56,9 @@ RSpec.describe "Book Searches", type: :request do
 
       results = JSON.parse(response.body, symbolize_names: true)
 
+      expect(results).to be_a(Hash)
+      expect(results).to have_key(:data)
+      expect(results[:data][:attributes][:books].count).to eq(5)
       expect(results[:data][:attributes][:books].first).to have_key(:isbn)
       expect(results[:data][:attributes][:books].first[:isbn]).to eq('no isbn data available')
     end
