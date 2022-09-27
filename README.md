@@ -19,7 +19,10 @@
     <li><a href="#db-schema"> ➤ Database Schema</a></li>
     <li><a href="#getting-started"> ➤ Getting Started</a></li>
     <li><a href="#scenario1"> ➤ Scenario 1: Run RSpec Test Suite </a></li>
-    <li><a href="#scenario2"> ➤ Scenario 2: Run Postman Test Collections </a></li>
+    <li><a href="#scenario2"> ➤ Scenario 2: Find the Forecast at a Location</a></li>
+    <li><a href="#scenario3"> ➤ Scenario 3: Register a User </a></li>
+    <li><a href="#scenario4"> ➤ Scenario 4: Initiate a User Session </a></li>
+    <li><a href="#scenario5"> ➤ Scenario 5: Get Directions and Weather at Arrival </a></li>
     <li><a href="#credits"> ➤ Credits</a></li>
   </ol>
 </details>
@@ -96,7 +99,7 @@
 <ul><li>Visit <a href="https://openweathermap.org/api">OpenWeather API </a></li>
 <li>Obtain an API key</li></ul>
 
-<p><b>8. </b>Install Figaro to create application.yml where your keys should be stored</a>.</p>
+<p><b>8. </b>Install Figaro to create application.yml and store your keys here</a>.</p>
 <pre><code>$ bundle exec figaro install</code></pre>
 <ul><li>Add keys to application.yml</li>
 
@@ -145,7 +148,7 @@
 ![image](https://user-images.githubusercontent.com/95776577/192571821-2df97ab5-fb76-4fc2-ae63-d8c63bcff915.png)
 
  <!-- SCENARIO5 -->
-<h2 id="scenario5"> :small_orange_diamond: Scenario 4: Find a road trip directions and weather at time of arrival </h2>
+<h2 id="scenario5"> :small_orange_diamond: Scenario 5: Get Directions and Weather at Arrival </h2>
   <li><b>Start the application on your local server</b></li><ul>
   <li><pre><code>$ rails s</code></pre></li></ul>
   <li><b>Open Postman</b></li><ul>
